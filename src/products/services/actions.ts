@@ -7,6 +7,6 @@ interface GetProductsOptions {
 
 export const getProducts = async({ filterKey }:GetProductsOptions) => {
 
-    const { data } = await productsApi.get<Product[]>(`/products`) 
-
+    const { data } = await productsApi.get<Product[]>(`/products`);
+    return data
 }
