@@ -1,9 +1,9 @@
 import axios from "axios"
 
 
-const productApi = axios.create({
+const productsApi = axios.create({
     baseURL: 'http://localhost:3100'
 })
 
 
-export { productApi };
+export { productsApi };

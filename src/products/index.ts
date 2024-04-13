@@ -6,7 +6,7 @@ export { ProductList } from './components/ProductList';
 
 export { useProducts } from './hooks/useProducts';
 
-export type { Product } from './interfaces/product';
+export { type Product } from './interfaces/product';
 
 
 export { StoreLayout } from './layout/StoreLayout';
