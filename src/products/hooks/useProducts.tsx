@@ -7,6 +7,7 @@ interface useOptions {
 
 
 export const useProducts = ({ filterKey }: useOptions) => {
+    
   
     const { isLoading, isError, data: products = [], isFetching } = useQuery({
         queryKey: ['products', { filterKey } ],
