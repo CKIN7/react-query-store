@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { ProductCard, useProduct } from ".."
+import { useEffect } from "react";
 
 
 export const ProductById = () => {
@@ -7,6 +8,10 @@ export const ProductById = () => {
   const { id } = useParams();
 
   const { isLoading, product } = useProduct({ id: +id! });
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [product])
   
 
   return (
