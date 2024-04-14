@@ -1,4 +1,4 @@
-import { type Product, ProductCard } from ".."
+import { type Product, ProductCard, usePrefetchProduct } from ".."
 
 interface Props {
   products: Product[];
@@ -6,6 +6,8 @@ interface Props {
 
 
 export const ProductList = ({products}: Props) => {
+
+  const preFetchProduct = usePrefetchProduct();
 
 
 
@@ -17,6 +19,7 @@ export const ProductList = ({products}: Props) => {
           <ProductCard 
             key={ product.id }
             product={ product }
+            preFetchProduct={ preFetchProduct }
 
           />
         ))
