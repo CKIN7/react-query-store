@@ -9,6 +9,17 @@ export const useProductMutation = () => {
   
     const mutation = useMutation({
         mutationFn: productActions.createProduct,
+        onMutate: (product) => {
+          const optimistProduct = {id: Math.random(), ...product}
+
+          queryClient.setQueryData<Product[]>(
+            ['products', { filterKey: product.category }],
+            (old) => {
+              if (!old) return [optimistProduct]
+               return [...old, optimistProduct]
+            })
+          
+        },  
         onSuccess:  (product) => {
           queryClient.setQueryData<Product[]>(
             ['products', { filterKey: product.category }],
