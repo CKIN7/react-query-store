@@ -10,8 +10,11 @@ export const useProductMutation = () => {
     const mutation = useMutation({
         mutationFn: productActions.createProduct,
         onSuccess:  (product) => {
-          queryClient.invalidateQueries({
-            queryKey: ['products', { filterKey: product.category }],
+          queryClient.setQueryData<Product[]>(
+            ['products', { filterKey: product.category }],
+            (old) => {
+              if (!old) return [product];
+               return [...old, product]
           })
 
              
