@@ -76,12 +76,12 @@ export const NewProduct = () => {
               )}
             />
 
-            <Controller
+             <Controller
               control={control}
-              name="description"
+              name="category"
               rules={{ required: true }}
               render={({ field }) => (
-                <select value={field.value} onChange={field.onChange} className="rounded-md p-3 mt-2 bg-gray-800 w-full">
+                <select className="rounded-md p-3 mt-2 bg-gray-800 w-full" value={field.value} onChange={field.onChange}>
                   <option value="men's clothing">Men's clothing</option>
                   <option value="women's clothing">Women's clothing</option>
                   <option value="jewelery">Jewelery</option>
