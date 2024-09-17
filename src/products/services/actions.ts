@@ -1,27 +1,21 @@
-import { type Product, productsApi } from "..";
-import { sleep } from "../../helper/sleep";
-
+import { type Product, productsApi } from '..';
 
 interface GetProductsOptions {
     filterKey?: string;
 }
 
-export const getProducts = async({ filterKey }:GetProductsOptions): Promise<Product[]> => {
-    await sleep(2)
+export const getProducts = async ({
+    filterKey,
+}: GetProductsOptions): Promise<Product[]> => {
+    const filterUrl = filterKey ? `category=${filterKey}` : '';
 
-    const filterUrl = filterKey ? `?category=${filterKey}` : '';
-
-    const { data } = await productsApi.get<Product[]>(`/products${filterUrl}`);
-    return data
-}
-
-export const getProductById = async( id: number ): Promise<Product> => {
-    
-    // await sleep(2)
-
+    const { data } = await productsApi.get<Product[]>(`/products?${filterUrl}`);
+    return data;
+};
+export const getProductById = async (id: number): Promise<Product> => {
     const { data } = await productsApi.get<Product>(`/products/${id}`);
-    return data
-}
+    return data;
+};
 
 export interface ProductLike {
     id?: number;
@@ -32,11 +26,7 @@ export interface ProductLike {
     image: string;
 }
 
-export const createProduct = async( product: ProductLike ) => {
-    await sleep(5)
-
-    // throw new Error('something went wrong')
-
-    const { data } = await productsApi.post<Product>(`/products`, product );
-    return data
-}
+export const creareProduct = async (product: ProductLike) => {
+    const { data } = await productsApi.post<Product>('/products', product);
+    return data;
+};
